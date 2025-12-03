@@ -12,3 +12,9 @@ CREATE TABLE books (
     pages INT,
     cover_path VARCHAR(255)
 );
+
+DESCRIBE books;
+
+ALTER TABLE books
+ADD COLUMN status ENUM('active','inactive') NOT NULL DEFAULT 'active';
+

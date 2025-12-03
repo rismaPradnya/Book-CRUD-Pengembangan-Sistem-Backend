@@ -19,24 +19,37 @@ $books = $book->readAll();
             <th>Judul</th>
             <th>Penulis</th>
             <th>Tahun Terbit</th>
+            <th>Halaman</th>
             <th>Kategori</th>
             <th>Status</th>
+            <th>Cover</th>
             <th>Aksi</th>
         </tr>
+    </thead>
+    <tbody>
         <?php foreach($books as $b): ?>
         <tr>
             <td><?= $b['id'] ?></td>
             <td><?= $b['title'] ?></td>
             <td><?= $b['author'] ?></td>
             <td><?= $b['year_published'] ?></td>
+            <td><?= $b['pages'] ?></td>
             <td><?= $b['category'] ?></td>
             <td><?= $b['status'] ?></td>
             <td>
-                <a href="edit.php?id=<?= $b['id'] ?>">Edit</a> |
-                <a href="delete.php?id=<?= $b['id'] ?>" onclick="return confirm('Yakin ingin hapus?')">Hapus</a>
-            </td>
-        </tr>
-        <?php endforeach; ?>
+                <?php if($b['cover_path']): ?>
+                        <img src="<?= $b['cover_path'] ?>" alt="Cover" width="80">
+                    <?php else: ?>
+                        -
+                    <?php endif; ?>
+                </td>
+                <td>
+                    <a href="edit.php?id=<?= $b['id'] ?>">Edit</a> |
+                    <a href="delete.php?id=<?= $b['id'] ?>" onclick="return confirm('Yakin ingin hapus?')">Hapus</a>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
     </table>
 </body>
 </html>

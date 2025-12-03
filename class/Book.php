@@ -12,8 +12,8 @@ class Book {
 
     // CREATE
     public function create($data) {
-        $sql = "INSERT INTO ".$this->table." (title, author, year_published, category, cover_path, status) 
-                VALUES (:title, :author, :year_published, :category, :cover_path, :status)";
+        $sql = "INSERT INTO ".$this->table." (title, author, year_published, pages, category, cover_path, status) 
+                VALUES (:title, :author, :year_published, :pages, :category, :cover_path, :status)";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute($data);
         return $this->conn->lastInsertId();
